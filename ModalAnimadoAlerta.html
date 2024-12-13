@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Productos</title>
+    <style>
+        body{
+            padding: 200px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #315764;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-editar {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-eliminar {
+            background-color: #af372f;
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            width: 30%;
+            text-align: center;
+            animation: fadeIn 0.3s;
+        }
+        .modal-content h2 {
+            color: #f44336;
+        }
+        .modal-content button {
+            padding: 10px 15px;
+            margin: 10px;
+        }
+        .btn-cancelar {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .icono-alerta {
+            font-size: 50px;
+            color: #f44336;
+            animation: shake 1s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes shake {
+            0% {transform: translateX(0);}
+            25% {transform: translateX(-5px);}
+            50% {transform: translateX(5px);}
+            75% {transform: translateX(-5px);}
+            100% {transform: translateX(0);}
+            100.1% {transform: translateX(0);}
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro de Productos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Código de Producto</th>
+                <th>Precio de Compra</th>
+                <th>Precio de Venta</th>
+                <th>Stock</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Producto A</td>
+                <td>12345</td>
+                <td>$50.00</td>
+                <td>$70.00</td>
+                <td>100</td>
+                <td>
+                    <button class="btn-editar">Editar</button>
+                    <button class="btn-eliminar" onclick="mostrarModal()">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Producto B</td>
+                <td>67890</td>
+                <td>$30.00</td>
+                <td>$50.00</td>
+                <td>200</td>
+                <td>
+                    <button class="btn-editar">Editar</button>
+                    <button class="btn-eliminar" onclick="mostrarModal()">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="modalEliminar" class="modal">
+        <div class="modal-content">
+            <div class="icono-alerta">⚠️</div>
+            <h2>Estás por eliminar una fila</h2>
+            <p>¿Estás seguro de que deseas continuar?</p>
+            <button class="btn-eliminar" onclick="continuarEliminacion()">Continuar</button>
+            <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar el modal
+        function mostrarModal() {
+            document.getElementById('modalEliminar').style.display = 'block';
+        }
+
+        // Cerrar el modal
+        function cerrarModal() {
+            document.getElementById('modalEliminar').style.display = 'none';
+        }
+
+        // Alerta de eliminacion realizada
+        function continuarEliminacion() {
+            alert('Eliminación confirmada');
+            cerrarModal();
+        }
+    </script>
+</body>
+</html>
